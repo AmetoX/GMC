@@ -1,0 +1,2 @@
+# GMC
+Geometrie computationala.
