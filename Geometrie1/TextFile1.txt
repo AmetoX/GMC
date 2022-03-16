@@ -6,6 +6,26 @@ Seminar 1
 	-Valoarea unui determinant "<" :  A < B <=>x1y2 <= x2y1
 -Tehnica 3-Suma.
 
+(d1) a1x+b1y+c=0
+(d2) a2x+b2y+c=0
+	det=|a1 b1| != 0
+		|a2 b2|
+
+	  x=|c1 b1| 
+		|c2 b2|
+		supra det
+
+	y=	|a1 c1| 
+		|a2 c2|
+		supra det
+		
+-SortedList, TreeNode (colectii/clase).
+
 Tema 3 :
 -Se da o multime de puncte in plan , se cere un cerc de arie minima care
 sa contina toate punctele in interior.
+	-minimal enclosing circle.
+	(solutia/metoda grosiera)
+Optional:
+	-variante optimizate a acestor probleme.
+
