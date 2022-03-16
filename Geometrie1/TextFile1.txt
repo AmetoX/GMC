@@ -1,0 +1,11 @@
+Seminar 1
+-Aria triunghiului format din trei puncte: ( A(x1,y1,1) B(x2,y2,1) C(0,0,1) )
+	-Aabc=1/2*|x1 y1 1| = 1/2*(x1y2-x2y1)
+			  |x2 y2 1|
+			  |0  0  1|
+	-Valoarea unui determinant "<" :  A < B <=>x1y2 <= x2y1
+-Tehnica 3-Suma.
+
+Tema 3 :
+-Se da o multime de puncte in plan , se cere un cerc de arie minima care
+sa contina toate punctele in interior.
