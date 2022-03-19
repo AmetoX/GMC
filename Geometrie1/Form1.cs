@@ -22,16 +22,22 @@ namespace Geometrie1
             Graphics g = e.Graphics;
             Random random = new Random();
             Pen p = new Pen(Color.Blue, 5);
-            Pen pc = new Pen(Color.Red, 5);            
-            
+            Pen pc = new Pen(Color.Red, 5);
+            int one = 0;
+            int two = 0;
             for (int i = 0; i < 10; i++)
             {
-                float x = random.Next(20, 780);
-                float y = random.Next(20, 380);
+                int x = random.Next(20, 780);
+                int y = random.Next(20, 380);
                 g.DrawEllipse(pc, x, y, 2, 2);
+                if (x >= one)
+                    one = x;
+                if (y >= two)
+                    two = y;
+                    
             }
-            //g.DrawRectangle(p, new Rectangle(10, 10, 800, 400));
-            //
+            g.DrawRectangle(p, new Rectangle(10, 10, one, two));
+            
         }
     }
 }
