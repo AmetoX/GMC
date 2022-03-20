@@ -34,7 +34,7 @@ namespace Geometrie2
             float y2 = 0;
             float x3 = 0;
             float y3 = 0;
-
+            int count = 0;
             for (int i = 0; i < 10; i++)
             {
                 //1/2*(x1y2-x2y1)
@@ -50,10 +50,11 @@ namespace Geometrie2
                 for(int j = 2; j < 10; j++)
                 {
                     float arie = (ariiX[i - 2] * ariiY[j - 1] + ariiX[i - 1] * ariiY[j] + ariiX[i] * ariiY[j - 2] - ariiX[i - 1]
-                        * ariiY[j - 2] - ariiX[i - 2] * ariiY[j] - ariiX[i] * ariiY[j - 1]) / 2;
+                        * ariiY[j - 2] - ariiX[i - 2] * ariiY[j] - ariiX[i] * ariiY[j - 1]);
                     if (arie < 0)
                         arie *= -1;
-
+                    arie /= 2;
+                    count++;
                     listBox1.Items.Add(arie.ToString());
                     if (arie < arie2)
                     {
@@ -67,7 +68,7 @@ namespace Geometrie2
                     arie2 = arie;
                 }
             }
-
+            textBox1.Text = count.ToString();
             g.DrawLine(p, x1, y1, x2, y2);
             g.DrawLine(p,x2, y2, x3, y3);
             g.DrawLine(p,x3,y3,x1,y1);                       
