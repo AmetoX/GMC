@@ -11,7 +11,7 @@ Seminar 1
 	det=|a1 b1| != 0
 		|a2 b2|
 
-	  x=|c1 b1| 
+	x=  |c1 b1| 
 		|c2 b2|
 		supra det
 
@@ -29,3 +29,50 @@ sa contina toate punctele in interior.
 Optional:
 	-variante optimizate a acestor probleme.
 
+
+Determinant de gradul 3:
+a11 a12 a13
+b11 b12 b13
+c11 c12 c13
+
+
+a11 a12 a13
+b11 b12 b13
+c11 c12 c13
+a11 a12 a13
+b12 b12 b13 
+
+det:a11b12c13+b11c12a13+c11a12b13-
+b11a12c13-a11c12b13-c11b12a13
+
+x1 y1 1
+x2 y2 1
+x3 y3 1
+x1 y1 1
+x2 y2 1
+
+det:x1y2+x2y3+x3y1-x2y1-x1y3-x3y2
+
+
+
+-Rezolvare problema triunghi 1.0:
+
+if (i >= 2)
+                {
+                    float arie = (ariiX[i - 2] * ariiY[i-1] + ariiX[i-1]*ariiY[i] + ariiX[i]*ariiY[i-2] - ariiX[i-1] 
+                        * ariiY[i-2] - ariiX[i-2]*ariiY[i] - ariiX[i]*ariiY[i-1])/2;
+                    if (arie < 0)
+                        arie *= -1;
+                    
+                    listBox1.Items.Add(arie.ToString());
+                    if (arie < arie2)
+                    {
+                        x1 = ariiX[i - 2];
+                        y1 = ariiY[i - 2];
+                        x2 = ariiX[i - 1];
+                        y2 = ariiY[i - 1];
+                        x3 = ariiX[i];
+                        y3 = ariiY[i];
+                    }
+                    arie2 = arie;
+                }
