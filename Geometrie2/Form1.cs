@@ -53,8 +53,8 @@ namespace Geometrie2
             {
                 //1/2*(x1y2-x2y1)
                 //det:x1y2+x2y3+x3y1-x3y2-x1y3-x2y1
-                int x = random.Next(10, 750);
-                int y = random.Next(10, 400);
+                int x = random.Next(10, panel1.Width);
+                int y = random.Next(10, panel1.Height);
                 g.DrawEllipse(pc, x, y, 2, 2);
                 ariiX[i] = x;
                 ariiY[i] = y;
