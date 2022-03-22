@@ -21,8 +21,8 @@ namespace Geometrie2
         {
             Graphics g = e.Graphics;
             Random random = new Random();
-            Pen p = new Pen(Color.Blue, 5);
-            Pen pc = new Pen(Color.Red, 5);
+            Pen p = new Pen(Color.Blue, 2);
+            Pen pc = new Pen(Color.Red, 4);
             
             int[] ariiX = new int[10];
             int[] ariiY = new int[10];  
@@ -38,7 +38,7 @@ namespace Geometrie2
             for (int i = 0; i < 10; i++)
             {
                 //1/2*(x1y2-x2y1)
-                //det:x1y2+x2y3+x3y1-x2y1-x1y3-x3y2
+                //det:x1y2+x2y3+x3y1-x3y2-x1y3-x2y1
                 int x = random.Next(10,750);
                 int y = random.Next(10,400);
                 g.DrawEllipse(pc, x, y, 2, 2);
@@ -49,8 +49,8 @@ namespace Geometrie2
             {
                 for(int j = 2; j < 10; j++)
                 {
-                    float arie = (ariiX[i - 2] * ariiY[j - 1] + ariiX[i - 1] * ariiY[j] + ariiX[i] * ariiY[j - 2] - ariiX[i - 1]
-                        * ariiY[j - 2] - ariiX[i - 2] * ariiY[j] - ariiX[i] * ariiY[j - 1]);
+                    float arie = (ariiX[i - 2] * ariiY[j - 1] + ariiX[i - 1] * ariiY[j] + ariiX[i] * ariiY[j - 2] - ariiX[i]
+                        * ariiY[j - 1] - ariiX[i - 2] * ariiY[j] - ariiX[i-1] * ariiY[j - 2]);
                     if (arie < 0)
                         arie *= -1;
                     arie /= 2;
