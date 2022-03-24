@@ -39,8 +39,8 @@ namespace Geometrie2
             Pen p = new Pen(Color.Blue, 2);
             Pen pc = new Pen(Color.Red, 6);
 
-            int[] ariiX = new int[10];
-            int[] ariiY = new int[10];
+            float[] ariiX = new float[9];
+            float[] ariiY = new float[9];
 
             float arie = 0;
             float x1 = 0;
@@ -49,44 +49,45 @@ namespace Geometrie2
             float y2 = 0;
             float x3 = 0;
             float y3 = 0;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 9; i++)
             {
                 //1/2*(x1y2-x2y1)
-                //det:x1y2+x2y3+x3y1-x3y2-x1y3-x2y1
-                int x = random.Next(10, panel1.Width);
-                int y = random.Next(10, panel1.Height);
+                //det:x1y2+x2y3+x3y1-x3y2-x1y3-x2y1               
+                int x = random.Next(10, panel1.Width-100);
+                int y = random.Next(10, panel1.Height-100);
                 g.DrawEllipse(pc, x, y, 2, 2);
                 ariiX[i] = x;
                 ariiY[i] = y;
             }            
-            float[] arii = new float[10];
-            for (int i = 2; i < 10; i++)
+            float[] arii = new float[100];
+            for (int i = 2; i < 9; i++)
             {
-                arie = (ariiX[i - 2] * ariiY[i - 1] + ariiX[i - 1] * ariiY[i] + ariiX[i] * ariiY[i - 2] - ariiX[i]
-                    * ariiY[i - 1] - ariiX[i - 2] * ariiY[i] - ariiX[i - 1] * ariiY[i - 2]);
-                if (arie < 0)
-                    arie *= -1;
-                arie /= 2;
-                
-                arii[i] = arie;
-                for (int j = 0; j < arii.Length; j++)
+                for (int j = 1; j < i; j++)
                 {
-                    if (arie < arii[j])
+                    for (int k = 0; k < j; k++)
                     {
-                        x1 = ariiX[i - 2];
-                        y1 = ariiY[i - 2];
-                        x2 = ariiX[i - 1];
-                        y2 = ariiY[i - 1];
-                        x3 = ariiX[i];
-                        y3 = ariiY[i];
-                        
+                        arie = (ariiX[k] * ariiY[j] + ariiX[j] * ariiY[i] + ariiX[i] * ariiY[k] - ariiX[i]
+                            * ariiY[j] - ariiX[k] * ariiY[i] - ariiX[j] * ariiY[k]);
+                        if (arie < 0)
+                            arie *= -1;
+                        arie /= 2;
+
+                        arii[i] = arie;
+                        for (int l = 2; l < arii.Length; l++)
+                        {
+                            if (arie <= arii[l])
+                            {
+                                x1 = ariiX[k];
+                                y1 = ariiY[k];
+                                x2 = ariiX[j];
+                                y2 = ariiY[j];
+                                x3 = ariiX[i];
+                                y3 = ariiY[i];
+                            }
+                        }
                     }
-                }
-                
-            }
-            
-               
-            
+                }                
+            }            
             g.DrawLine(p, x1, y1, x2, y2);
             g.DrawLine(p, x2, y2, x3, y3);
             g.DrawLine(p, x3, y3, x1, y1);

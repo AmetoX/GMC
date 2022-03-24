@@ -76,3 +76,25 @@ if (i >= 2)
                     }
                     arie2 = arie;
                 }
+--------------------------------------
+
+                    arie = (ariiX[i - 2] * ariiY[i - 1] + ariiX[i - 1] * ariiY[i] + ariiX[i] * ariiY[i - 2] - ariiX[i]
+                        * ariiY[i - 1] - ariiX[i - 2] * ariiY[i] - ariiX[i - 1] * ariiY[i - 2]);
+                    if (arie < 0)
+                        arie *= -1;
+                    arie /= 2;
+
+                    arii[i] = arie;
+                    for (int j = 2; j < arii.Length; j++)
+                    {
+                        if (arie <= arii[j])
+                        {
+                            x1 = ariiX[i - 2];
+                            y1 = ariiY[i - 2];
+                            x2 = ariiX[i - 1];
+                            y2 = ariiY[i - 1];
+                            x3 = ariiX[i];
+                            y3 = ariiY[i];
+
+                        }
+                    }
