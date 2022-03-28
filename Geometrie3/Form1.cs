@@ -44,10 +44,10 @@ namespace Geometrie3
                     two = y;
             }
 
-            int punct = random.Next(0, 9);
-            g.DrawEllipse(p, X[punct], Y[punct], 3, 3);
+            //int punct = random.Next(0, 9);
+            //g.DrawEllipse(p, X[punct], Y[punct], 3, 3);
             float distanta = 0;
-
+            /*
             for (int i = 0; i < 9; i++)
             {
                 float dis = (float)Math.Sqrt(Math.Pow(X[i] - X[punct], 2) +
@@ -57,10 +57,32 @@ namespace Geometrie3
                     distanta = dis;                   
                 }
             }
-            
-            g.DrawEllipse(rz,X[punct]-distanta, Y[punct]-distanta, 
-                distanta + distanta+10, distanta + distanta+10);
+            */
+            int x1 = 0;
+            int y1 = 0;
+            int x2 = 0;
+            int y2 = 0;
 
+            for(int i = 0; i < 8; i++)
+            {
+                for(int j = 1; j < 9; j++)
+                {
+                    float dis = (float)Math.Sqrt(Math.Pow(X[i] - X[j], 2) +
+                Math.Pow(Y[i] - Y[j], 2));
+                    if (dis >= distanta)
+                    {
+                        distanta = dis;
+                        x1 = i;
+                        y1 = i;
+                        x2 = j;
+                        y2 = j;
+                    }
+                }
+            }
+
+            g.DrawEllipse(p, X[x1], Y[y1], 3, 3);
+            g.DrawEllipse(p, X[x2], Y[y2], 3, 3);
+            g.DrawEllipse(rz,X[x1]-distanta, Y[y1]-distanta,distanta + distanta+10, distanta + distanta+10);
             //g.DrawEllipse(pen, centerX - radius, centerY - radius,radius + radius, radius + radius);
             //points = points.OrderBy(item => item.X).ThenBy(item => item.Y).ToList();
         }
