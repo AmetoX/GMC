@@ -55,7 +55,6 @@ namespace Geometrie3
                         distanta1 = dis;
                         x1 = (X[j]+X[i])/2;
                         y1 = (Y[j]+Y[i])/2;
-
                     }
                 }
             }
