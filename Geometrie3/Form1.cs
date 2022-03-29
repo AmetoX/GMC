@@ -27,9 +27,10 @@ namespace Geometrie3
             Pen p = new Pen(Color.Blue, 4);
             Pen cr = new Pen(Color.Red, 4);
             Pen rz = new Pen(Color.Green, 3);
-            float x = 0, y = 0, one = 0, two = 0;
-            float[] X = new float[9];
-            float[] Y = new float[9];           
+            float x = 0, y = 0;
+            int n = random.Next(0, 100);
+            float[] X = new float[n];
+            float[] Y = new float[n];           
 
             for (int i = 0; i < 9; i++)
             {
@@ -38,51 +39,31 @@ namespace Geometrie3
                 X[i] = x;
                 Y[i] = y;
                 g.DrawEllipse(cr, x, y, 2, 2);
-                if (x > one)
-                    one = x;
-                if (y > two)
-                    two = y;
             }
+            float distanta1 = 0;
+            float x1 = 0;
+            float y1 = 0;
 
-            //int punct = random.Next(0, 9);
-            //g.DrawEllipse(p, X[punct], Y[punct], 3, 3);
-            float distanta = 0;
-            /*
-            for (int i = 0; i < 9; i++)
+            for(int i = 0; i < n-1; i++)
             {
-                float dis = (float)Math.Sqrt(Math.Pow(X[i] - X[punct], 2) +
-                                Math.Pow(Y[i] - Y[punct], 2));
-                if (dis > distanta)
-                {
-                    distanta = dis;                   
-                }
-            }
-            */
-            int x1 = 0;
-            int y1 = 0;
-            int x2 = 0;
-            int y2 = 0;
-
-            for(int i = 0; i < 8; i++)
-            {
-                for(int j = 1; j < 9; j++)
+                for(int j = 1; j < n; j++)
                 {
                     float dis = (float)Math.Sqrt(Math.Pow(X[i] - X[j], 2) +
                 Math.Pow(Y[i] - Y[j], 2));
-                    if (dis >= distanta)
+                    if (dis > distanta1)
                     {
-                        distanta = dis;
-                        x1 = i;
-                        y1 = i;
-                        x2 = j;
-                        y2 = j;
+                        distanta1 = dis;
+                        x1 = (X[j]+X[i])/2;
+                        y1 = (Y[j]+Y[i])/2;
+
                     }
                 }
             }
-
-            g.DrawEllipse(p, X[x1], Y[y1], 3, 3);
-            g.DrawEllipse(p, X[x2], Y[y2], 3, 3);
-            g.DrawEllipse(rz,X[x1]-distanta, Y[y1]-distanta,distanta + distanta+10, distanta + distanta+10);
+            int one = (int)x1;
+            int two = (int)y1;
+            int distanta = (int)distanta1 / 2;
+            g.DrawEllipse(rz, x1, y1, 2, 2);
+            g.DrawEllipse(rz,one-distanta, two-distanta,distanta + distanta+10, distanta + distanta+10);
             //g.DrawEllipse(pen, centerX - radius, centerY - radius,radius + radius, radius + radius);
             //points = points.OrderBy(item => item.X).ThenBy(item => item.Y).ToList();
         }
