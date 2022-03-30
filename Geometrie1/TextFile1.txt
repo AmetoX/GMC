@@ -1,4 +1,4 @@
-Seminar 1
+﻿Seminar 1
 -Aria triunghiului format din trei puncte: ( A(x1,y1,1) B(x2,y2,1) C(0,0,1) )
 	-Aabc=1/2*|x1 y1 1| = 1/2*(x1y2-x2y1)
 			  |x2 y2 1|
@@ -198,3 +198,17 @@ x1-----------randompct
 random---------x2
     final dis
     ==> cercul
+
+Invelitoare convexa:
+- sa aflam cel mai de jos punct
+-ctangenta: math.atan(y1-y2)/(x2-x1)
+
+algoritm jarvis (S) este    
+// S este setul de puncte 
+// P va fi setul de puncte care formează carena convexă. Dimensiunea setului final este i. pointOnHull = cel mai stâng punct din S 
+// care este garantat să facă parte din CH (S) i: = 0 repeta       
+P [i]: = punct final Punct final: = S [0] 
+// punct final final pentru o margine candidată pe corp pentru j de la 0 la | S | do            
+// punct final == pointOnHull este un caz rar și se poate întâmpla numai atunci 
+când j == 1 și încă nu a fost stabilit un punct final mai bun pentru buclă dacă 
+(punctul final == pointOnHull) sau (S [j] este la stânga liniei de la P [i] la punctul final) atunci                punct final: = S [j] // a găsit o viraj mai mare la stânga, actualizați punctul final i: = i + 1 punctOnHull = punct final pana cand punct final = P [0] // înfășurat până la primul punct al corpului
