@@ -42,8 +42,7 @@ namespace Geometrie4
             Graphics g = e.Graphics;
             Random random = new Random();
             Pen cr = new Pen(Color.DarkCyan, 4);
-            Pen rz = new Pen(Color.Black, 2);
-            Pen w = new Pen(Color.White, 4);
+            Pen inv = new Pen(Color.Black, 2);
             int n = random.Next(10, 20);
             float x1 = 0, y1 = 0;
             Point[] points = new Point[n];
@@ -75,9 +74,9 @@ namespace Geometrie4
             } while (p != l);
             for(int i = 0; i < hull.Count-1; i++)
             {
-                g.DrawLine(rz,hull[i].x,hull[i].y,hull[i+1].x,hull[i+1].y);
+                g.DrawLine(inv,hull[i].x,hull[i].y,hull[i+1].x,hull[i+1].y);
             }
-            g.DrawLine(rz, hull[hull.Count-1].x, hull[hull.Count-1].y, hull[0].x, hull[0].y);
+            g.DrawLine(inv, hull[hull.Count-1].x, hull[hull.Count-1].y, hull[0].x, hull[0].y);
 
         }
 
