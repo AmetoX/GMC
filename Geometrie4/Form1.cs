@@ -18,23 +18,15 @@ namespace Geometrie4
         {
             InitializeComponent();
         }
-        public class Point
-        {
-            public float x, y;
-            public Point(float x, float y)
-            {
-                this.x = x;
-                this.y = y;
-            }
-        }
+
         public static float orientation(Point p, Point q, Point r)
         {
-            float val = (q.y - p.y) * (r.x - q.x) -
-                    (q.x - p.x) * (r.y - q.y);
+            float val = (q.Y - p.Y) * (r.X - q.X) -
+                    (q.X - p.X) * (r.Y - q.Y);
 
             if (val == 0) 
-                return 0; 
-            return (val > 0) ? 1 : 2; 
+                return 0;//colineare
+            return (val > 0) ? 1 : 2;//in sensul acelor de ceasornic sau invers
         }
        
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -44,7 +36,7 @@ namespace Geometrie4
             Pen cr = new Pen(Color.DarkCyan, 4);
             Pen inv = new Pen(Color.Black, 2);
             int n = random.Next(10, 20);
-            float x1 = 0, y1 = 0;
+            int x1 = 0, y1 = 0;
             Point[] points = new Point[n];
             List<Point> hull = new List<Point>();
             for (int i = 0; i < n; i++)
@@ -52,15 +44,18 @@ namespace Geometrie4
                 x1 = random.Next(50, panel1.Width - 100);
                 y1 = random.Next(50, panel1.Height - 100);
                 points[i] = new Point(x1, y1);
-                g.DrawEllipse(cr, x1, y1, 2, 2);
+                g.DrawEllipse(cr, x1-2, y1-2, 4, 4);
             }
 
             int l = 0;
             for (int i = 1; i < n; i++)
-                if (points[i].x < points[l].x)
+            {
+                if (points[i].X < points[l].X)
                     l = i;
-            
-            int p = l, q;
+            }
+
+            int p = l;
+            int q;
             do
             {
                 hull.Add(points[p]);
@@ -72,13 +67,12 @@ namespace Geometrie4
                 }
                 p = q;
             } while (p != l);
+
             for(int i = 0; i < hull.Count-1; i++)
             {
-                g.DrawLine(inv,hull[i].x,hull[i].y,hull[i+1].x,hull[i+1].y);
+                g.DrawLine(inv,hull[i].X,hull[i].Y,hull[i+1].X,hull[i+1].Y);
             }
-            g.DrawLine(inv, hull[hull.Count-1].x, hull[hull.Count-1].y, hull[0].x, hull[0].y);
-
+            g.DrawLine(inv, hull[hull.Count-1].X, hull[hull.Count-1].Y, hull[0].X, hull[0].Y);
         }
-
     }
 }
