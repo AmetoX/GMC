@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeminarAlg.Properties
+namespace Geometrie5.Properties
 {
 
 

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2BFBDE74-2A50-40B8-B491-5232E55B0397}</ProjectGuid>
+    <ProjectGuid>{9E478851-42EB-4906-A5DC-C7527BFA67E5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SeminarAlg</RootNamespace>
-    <AssemblyName>SeminarAlg</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <RootNamespace>Geometrie5</RootNamespace>
+    <AssemblyName>Geometrie5</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>

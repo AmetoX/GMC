@@ -1,4 +1,4 @@
-﻿namespace SeminarAlg
+﻿namespace Geometrie5
 {
     partial class Form1
     {
@@ -28,23 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(853, 496);
+            this.panel1.TabIndex = 0;
+            this.panel1.Click += new System.EventHandler(this.panel1_Click);
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1032, 670);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ClientSize = new System.Drawing.Size(852, 496);
+            this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
-            this.MouseEnter += new System.EventHandler(this.Form1_MouseEnter);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
