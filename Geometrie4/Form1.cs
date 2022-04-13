@@ -70,6 +70,7 @@ namespace Geometrie4
 
             for(int i = 0; i < hull.Count-1; i++)
             {
+               
                 g.DrawLine(inv,hull[i].X,hull[i].Y,hull[i+1].X,hull[i+1].Y);
             }
             g.DrawLine(inv, hull[hull.Count-1].X, hull[hull.Count-1].Y, hull[0].X, hull[0].Y);
