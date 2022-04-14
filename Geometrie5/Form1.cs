@@ -21,9 +21,17 @@ namespace Geometrie5
         }
         
         List<Point> hull = new List<Point>();
+        public int i = 0;
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-
+            Pen cr = new Pen(Color.DarkCyan, 4);
+            Point aux = new Point(e.X, e.Y);
+            textBox1.Text = (string.Format("X: {0} Y: {1}", e.X, e.Y));
+            hull.Append(aux);
+            
+                g.DrawEllipse(cr, e.X, e.Y, 2, 2);
+            i++;
+            
 
         }
 
@@ -43,16 +51,13 @@ namespace Geometrie5
         private void button1_Click(object sender, EventArgs e)
         {
             panel1.Refresh();
+            i = 0;
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
             
-            Pen cr = new Pen(Color.DarkCyan, 4);
-            Point aux = new Point(e.X, e.Y);
-            textBox1.Text = (string.Format("X: {0} Y: {1}", e.X, e.Y));
-            hull.Append(aux);
-            g.DrawEllipse(cr, aux.X, aux.Y, 2, 2);
+
         }
     }
 }
