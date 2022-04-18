@@ -16,8 +16,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie3", "..\Geometrie3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie4", "..\Geometrie4\Geometrie4.csproj", "{CBAE908F-B4A8-4E80-A131-BEE8FC983CB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie5", "..\Geometrie5\Geometrie5.csproj", "{D1F8AFE7-30A7-42AC-ACE3-98BD265C770B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie5.1", "..\Geometrie5.1\Geometrie5.1.csproj", "{525490E9-DEB0-4B4C-BC54-10C54E19ACAE}"
 EndProject
 Global
@@ -42,10 +40,6 @@ Global
 		{CBAE908F-B4A8-4E80-A131-BEE8FC983CB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBAE908F-B4A8-4E80-A131-BEE8FC983CB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBAE908F-B4A8-4E80-A131-BEE8FC983CB7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1F8AFE7-30A7-42AC-ACE3-98BD265C770B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1F8AFE7-30A7-42AC-ACE3-98BD265C770B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1F8AFE7-30A7-42AC-ACE3-98BD265C770B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1F8AFE7-30A7-42AC-ACE3-98BD265C770B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{525490E9-DEB0-4B4C-BC54-10C54E19ACAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{525490E9-DEB0-4B4C-BC54-10C54E19ACAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{525490E9-DEB0-4B4C-BC54-10C54E19ACAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
