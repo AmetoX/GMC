@@ -7,57 +7,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
 
 namespace Geometrie5
 {
     public partial class Form1 : Form
     {
         Graphics g;
+        public int i = -1;
+        public int j = 0;
+        public int n, m;
+        Point[] pct;
         public Form1()
         {
             InitializeComponent();
             g = CreateGraphics();
         }
-        
-        List<Point> hull = new List<Point>();
-        public int i = 0;
-        private void panel1_MouseClick(object sender, MouseEventArgs e)
-        {
-            Pen cr = new Pen(Color.DarkCyan, 4);
-            Point aux = new Point(e.X, e.Y);
-            textBox1.Text = (string.Format("X: {0} Y: {1}", e.X, e.Y));
-            hull.Append(aux);
-            
-                g.DrawEllipse(cr, e.X, e.Y, 2, 2);
-            i++;
-            
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-            
-            Pen cr = new Pen(Color.Black, 4);
-            for (int i = 1; i < hull.Count-1; i++)
-            {
-                g.DrawLine(cr, hull[i], hull[i - 1]);
-                //g.DrawLine(cr, hull[i], hull[i + 1]);
-                //g.DrawEllipse(cr, hull[i].X, hull[i].Y, 2, 2);
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            panel1.Refresh();
-            i = 0;
+            n = int.Parse(textBox1.Text);
+            m = n - 1;
+            i = -1;
+            j = 0;
+            pct = new Point[n];
         }
 
-        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            
+            i = -1;
+            textBox1.Text = "";
+            textBox2.Text = "";           
+        }
 
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            i++;
+            j++;
+            Pen cr = new Pen(Color.DarkCyan, 4);
+            //textBox1.Text = (string.Format("X: {0} Y: {1}", e.X, e.Y));
+            g.DrawEllipse(cr, e.X, e.Y, 2, 2);
+            Point pt = new Point(e.X, e.Y);
+            pct[i] = pt;
+            if (i > 0)
+            {
+                g.DrawLine(cr, pct[i - 1].X, pct[i - 1].Y, pct[i].X, pct[i].Y);
+            }
+
+            textBox2.Text = m.ToString();
+            n--;
+            m--;
+            if (n == 0)
+            {
+                g.DrawLine(cr, pct[0].X, pct[0].Y, pct[j - 1].X, pct[j - 1].Y);
+            }
         }
     }
 }

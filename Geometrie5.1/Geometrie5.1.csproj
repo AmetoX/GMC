@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{525490E9-DEB0-4B4C-BC54-10C54E19ACAE}</ProjectGuid>
+    <ProjectGuid>{3E04A96C-71C5-4E1E-AD57-1ED7CF54A36F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Geometrie5._1</RootNamespace>
     <AssemblyName>Geometrie5.1</AssemblyName>
@@ -54,9 +54,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
