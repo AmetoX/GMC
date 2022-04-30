@@ -36,7 +36,9 @@ namespace Geometrie5
         {
             i = -1;
             textBox1.Text = "";
-            textBox2.Text = "";           
+            textBox2.Text = "";
+            this.Hide();
+            this.Show();
         }
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
@@ -46,6 +48,8 @@ namespace Geometrie5
             Pen cr = new Pen(Color.DarkCyan, 4);
             //textBox1.Text = (string.Format("X: {0} Y: {1}", e.X, e.Y));
             g.DrawEllipse(cr, e.X, e.Y, 2, 2);
+            g.DrawString(j.ToString(), new Font(FontFamily.GenericSansSerif, 10),
+                new SolidBrush(Color.Black), e.X,e.Y);
             Point pt = new Point(e.X, e.Y);
             pct[i] = pt;
             if (i > 0)
