@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +16,7 @@ namespace Geometrie6
         public int k = -1;
         public int l = 0;
         public int n, m;
+        public int n2;
         Point[] pct;
         public Form1()
         {
@@ -26,6 +27,7 @@ namespace Geometrie6
         private void button1_Click(object sender, EventArgs e)
         {
             n = int.Parse(textBox1.Text);
+            n2= int.Parse(textBox1.Text);
             m = n - 1;
             k = -1;
             l = 0;
@@ -40,59 +42,46 @@ namespace Geometrie6
             this.Hide();
             this.Show();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            //diag
-            Pen cr = new Pen(Color.DarkCyan, 4);
-            List<Point> diag = new List<Point>();
-            int diagonale = 0;
-            for (int i = 0; i < n - 3; i++)
+     
+        }
+        public double dist2 = 0;        
+        public bool latura(Point a, Point b,Point c)
+        {
+            List<Double> hull = new List<Double>();
+            double per = dist(a,b)+dist(b,c)+dist(c,a);
+
+            hull.Add(dist2);
+            foreach (double d in hull)
             {
-                for (int j = i + 2; j < n - 1; j++)
+                if (d <= per)
                 {
-                    if (i == 0 && j == 0)
-                    {
-                        break;
-                    }
-                    if (latura(pct[i], pct[j]))
-                    {
-                        diag.Append(pct[i]);
-                        diag.Append(pct[j]);
-                        g.DrawLine(cr, pct[i].X, pct[i].Y, pct[j].X, pct[j].Y);
-                        diagonale++;
-                    }
-                    if (diagonale == n - 3)
-                    {
-                        return;
-                    }
+                    
+                    hull.Add(per);
+                    textBox3.Text = per.ToString();
+                    return true;
                 }
             }
-            textBox3.Text = diagonale.ToString();
-
-      
+            return false;
         }
-        public double dist2 = 0;
-        public bool latura(Point p, Point q)
+        public double dist(Point p, Point q)
         {
-            double dist = Math.Sqrt((p.X - q.X) * (p.X - q.X) +
-                     (p.Y - q.Y) * (p.Y - q.Y));
-
-            if (dist != dist2)
-            {
-                dist2 = dist;
-                return true;
-            }
-            return true;
+            // The distance between vertices `(x1, y1)` & `(x2,
+            // y2)` is `√((x2 − x1) ^ 2 + (y2 − y1) ^ 2)
+            return Math.Sqrt((q.X - p.X) * (q.X - p.X) +
+                     (q.Y - p.Y) * (q.Y - p.Y));
         }
-
+        private double Determinant(PointF p1, PointF p2, PointF p3)
+        {
+            return p1.X * p2.Y + p2.X * p3.Y + p3.X * p1.Y - p3.X * p2.Y - p2.X * p1.Y - p1.X * p3.Y;
+        }
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
-        {
+        {            
             k++;
             l++;
             Pen cr = new Pen(Color.DarkCyan, 4);
-            //textBox1.Text = (string.Format("X: {0} Y: {1}", e.X, e.Y));
             g.DrawEllipse(cr, e.X, e.Y, 2, 2);
             g.DrawString(l.ToString(), new Font(FontFamily.GenericSansSerif, 10),
                 new SolidBrush(Color.Black), e.X, e.Y);
@@ -109,6 +98,31 @@ namespace Geometrie6
             if (n == 0)
             {
                 g.DrawLine(cr, pct[0].X, pct[0].Y, pct[l - 1].X, pct[l - 1].Y);
+
+
+                int diagonale = 0;
+                for (int i = 1; i < n2 - 3; i++)
+                {
+                    for (int j = i + 2; j < n2 - 1; j++)
+                    {
+
+                        if (i == 0 && j == n2-1)
+                        {
+                            break;
+                        }
+                        bool intersec = false;
+
+                        if (!intersec)
+                        {
+                            g.DrawLine(cr, pct[i].X, pct[i].Y, pct[j].X, pct[j].Y);
+                            diagonale++;
+                        }
+                        if (diagonale == n2 - 3)
+                        {
+                            return;
+                        }
+                    }
+                }
             }
         }
     }
