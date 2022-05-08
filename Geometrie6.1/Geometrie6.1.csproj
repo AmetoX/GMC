@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1296766-AB60-445D-8C04-4BB37977789F}</ProjectGuid>
+    <ProjectGuid>{B24FAB84-E071-499A-8C8F-ABA681D4FB75}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Geometrie5._2</RootNamespace>
-    <AssemblyName>Geometrie5.2</AssemblyName>
+    <RootNamespace>Geometrie6._1</RootNamespace>
+    <AssemblyName>Geometrie6.1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

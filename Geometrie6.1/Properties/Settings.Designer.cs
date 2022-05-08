@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Geometrie5._2.Properties
+namespace Geometrie6._1.Properties
 {
 
 

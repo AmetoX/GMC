@@ -9,38 +9,62 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace Geometrie6
+namespace Geometrie6._1
 {
     public partial class Form1 : Form
     {
         Graphics g;
-        int n = 0;
-        const int raza = 3;
-        List<Point> p = new List<Point>();
+        public int i = -1;
+        public int j = 0;
+        public int n, m,n2;
+        Point[] pct;
         public Form1()
         {
             InitializeComponent();
             g = CreateGraphics();
-
         }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            i++;
+            j++;
+            Pen cr = new Pen(Color.DarkCyan, 4);
+            //textBox1.Text = (string.Format("X: {0} Y: {1}", e.X, e.Y));
+            g.DrawEllipse(cr, e.X, e.Y, 2, 2);
+            g.DrawString(j.ToString(), new Font(FontFamily.GenericSansSerif, 10),
+                new SolidBrush(Color.Black), e.X, e.Y);
+            Point pt = new Point(e.X, e.Y);
+            pct[i] = pt;
+            if (i > 0)
+            {
+                g.DrawLine(cr, pct[i - 1].X, pct[i - 1].Y, pct[i].X, pct[i].Y);
+            }
+            textBox2.Text = m.ToString();
+            n2--;
+            m--;
+            if (n2 == 0)
+            {
+                g.DrawLine(cr, pct[0].X, pct[0].Y, pct[j - 1].X, pct[j - 1].Y);
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            Pen cr = new Pen(Color.DarkCyan, 4);
-            if (n < 3)
-                return;
-            g.DrawLine(cr, p[n - 1], p[0]);
+            n = int.Parse(textBox1.Text);
+            n2 = int.Parse(textBox1.Text);
+            m = n - 1;
+            i = -1;
+            j = 0;
+            pct = new Point[n];
         }
-        private void Form1_Click(object sender, EventArgs e)
+
+        private void button2_Click(object sender, EventArgs e)
         {
-            Pen cr = new Pen(Color.DarkCyan, 4);
-            Pen cr2 = new Pen(Color.Black, 4);
-            p.Add(this.PointToClient(new Point(Form1.MousePosition.X, Form1.MousePosition.Y)));
-            g.DrawEllipse(cr2, p[n].X, p[n].Y, raza, raza);
-            g.DrawString((n + 1).ToString(), new Font(FontFamily.GenericSansSerif, 10),
-            new SolidBrush(Color.Navy), p[n].X + raza, p[n].Y - raza);
-            if (n > 0)
-                g.DrawLine(cr, p[n - 1], p[n]);
-            n++;
+            i = -1;
+            textBox1.Text = "";
+            textBox2.Text = "";
+            this.Hide();
+            this.Show();
         }
         private double Sarrus(Point p1, Point p2, Point p3)
         {
@@ -48,13 +72,13 @@ namespace Geometrie6
         }
         private bool intoarcere_spre_stanga(int p1, int p2, int p3)
         {
-            if (Sarrus(p[p1], p[p2], p[p3]) < 0)
+            if (Sarrus(pct[p1], pct[p2], pct[p3]) < 0)
                 return true;
             return false;
         }
         private bool intoarcere_spre_dreapta(int p1, int p2, int p3)
         {
-            if (Sarrus(p[p1], p[p2], p[p3]) > 0)
+            if (Sarrus(pct[p1], pct[p2], pct[p3]) > 0)
                 return true;
             return false;
         }
@@ -85,52 +109,50 @@ namespace Geometrie6
                 return true;
             return false;
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            Pen cr = new Pen(Color.Red, 4);
+            if (n <= 3)
+                return;
             int nr_diagonale = 0;
             Tuple<int, int>[] diagonale = new Tuple<int, int>[n - 3];
-            for (int i = 0; i < n; i++)
-            {
-                for(int j = i+2; j < n; j++)
+            Pen cr = new Pen(Color.Red, 4);
+            for (int i = 0; i < n - 2; i++)
+                for (int j = i + 2; j < n; j++)
                 {
                     if (i == 0 && j == n - 1)
-                    {
-                        break;
-                    }
+                        break; // exclud ultima latura
                     bool intersectie = false;
+                    //daca p_i p_j nu intersecteaza nicio latura neincidenta a poligonului
                     for (int k = 0; k < n - 1; k++)
-                    {
-                        if (i != k && i != (k + 1) && j != k && j != (k + 1) && se_intersecteaza(p[i], p[j], p[k], p[k + 1]))
+                        if (i != k && i != (k + 1) && j != k && j != (k + 1) && se_intersecteaza(pct[i], pct[j], pct[k], pct[k + 1]))
                         {
                             intersectie = true;
                             break;
                         }
-                    }
-                    if (i != n - 1 && i != 0 && j != n - 1 && j != 0 && se_intersecteaza(p[i], p[j], p[n - 1], p[0]))
+                    //verif si pt ultima latura a poligonului
+                    if (i != n - 1 && i != 0 && j != n - 1 && j != 0 && se_intersecteaza(pct[i], pct[j], pct[n - 1], pct[0]))
                     {
                         intersectie = true;
-                        break;
                     }
                     if (!intersectie)
                     {
+                        //si daca p_i p_j nu intersecteaza niciuna din diagonalele alese anterior
                         for (int k = 0; k < nr_diagonale; k++)
-                        {
                             if (i != diagonale[k].Item1 && i != diagonale[k].Item2 &&
                             j != diagonale[k].Item1 && j != diagonale[k].Item2 &&
-                           se_intersecteaza(p[i], p[j], p[diagonale[k].Item1], p[diagonale[k].Item2]))
+                           se_intersecteaza(pct[i], pct[j], pct[diagonale[k].Item1], pct[diagonale[k].Item2]))
                             {
                                 intersectie = true;
                                 break;
                             }
-                        }
                         if (!intersectie)
                         {
+                            //si daca p_i p_j se afla in interiorul poligonului
                             if (se_afla_in_interiorul_poligonului(i, j))
                             {
+                                //se retine diagonala p_i p_j
                                 Thread.Sleep(100);
-                                g.DrawLine(cr, p[i], p[j]);
+                                g.DrawLine(cr, pct[i], pct[j]);
                                 diagonale[nr_diagonale] = new Tuple<int, int>(i, j);
                                 nr_diagonale++;
                             }
@@ -139,7 +161,6 @@ namespace Geometrie6
                     if (nr_diagonale == n - 3)
                         return;
                 }
-            }
         }
     }
 }

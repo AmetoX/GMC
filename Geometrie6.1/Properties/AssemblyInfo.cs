@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Geometrie5.2")]
+[assembly: AssemblyTitle("Geometrie6.1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Geometrie5.2")]
+[assembly: AssemblyProduct("Geometrie6.1")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a1296766-ab60-445d-8c04-4bb37977789f")]
+[assembly: Guid("b24fab84-e071-499a-8c8f-aba681d4fb75")]
 
 // Version information for an assembly consists of the following four values:
 //

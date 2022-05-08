@@ -56,7 +56,6 @@ namespace Geometrie5
             {
                 g.DrawLine(cr, pct[i - 1].X, pct[i - 1].Y, pct[i].X, pct[i].Y);
             }
-
             textBox2.Text = m.ToString();
             n--;
             m--;
