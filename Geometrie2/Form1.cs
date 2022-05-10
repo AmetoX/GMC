@@ -41,7 +41,7 @@ namespace Geometrie2
 
             float[] ariiX = new float[9];
             float[] ariiY = new float[9];
-
+            float distmin = 100000000;
             float arie = 0;
             float x1 = 0;
             float y1 = 0;
@@ -73,10 +73,10 @@ namespace Geometrie2
                         arie /= 2;
 
                         arii[i] = arie;
-                        for (int l = 2; l < arii.Length; l++)
-                        {
-                            if (arie <= arii[l])
+                       
+                            if (arie <= distmin)
                             {
+                                distmin = arie;
                                 x1 = ariiX[k];
                                 y1 = ariiY[k];
                                 x2 = ariiX[j];
@@ -84,7 +84,7 @@ namespace Geometrie2
                                 x3 = ariiX[i];
                                 y3 = ariiY[i];
                             }
-                        }
+                        
                     }
                 }                
             }            
