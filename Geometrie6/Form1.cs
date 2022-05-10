@@ -16,7 +16,7 @@ namespace Geometrie6
         Graphics g;
         int n = 0;
         const int raza = 3;
-        List<Point> p = new List<Point>();
+        List<PointF> p = new List<PointF>();
         public Form1()
         {
             InitializeComponent();
@@ -30,6 +30,7 @@ namespace Geometrie6
                 return;
             g.DrawLine(cr, p[n - 1], p[0]);
         }
+
         private void Form1_Click(object sender, EventArgs e)
         {
             Pen cr = new Pen(Color.DarkCyan, 4);
@@ -42,9 +43,10 @@ namespace Geometrie6
                 g.DrawLine(cr, p[n - 1], p[n]);
             n++;
         }
-        private double Sarrus(Point p1, Point p2, Point p3)
+        private float Sarrus(PointF p1, PointF p2, PointF p3)
         {
-            return p1.X * p2.Y + p2.X * p3.Y + p3.X * p1.Y - p3.X * p2.Y - p2.X * p1.Y - p1.X * p3.Y;
+            float sarus = p1.X * p2.Y + p2.X * p3.Y + p3.X * p1.Y - p3.X * p2.Y - p2.X * p1.Y - p1.X * p3.Y;
+            return sarus;
         }
         private bool intoarcere_spre_stanga(int p1, int p2, int p3)
         {
@@ -70,10 +72,12 @@ namespace Geometrie6
             int p_urm = (p < n - 1) ? p + 1 : 0;
             return intoarcere_spre_stanga(p_ant, p, p_urm);
         }
-        private bool se_intersecteaza(Point s1, Point s2, Point p1, Point p2)
+        private bool se_intersecteaza(PointF s1, PointF s2, PointF p1, PointF p2)
         {
             if (Sarrus(p2, p1, s1) * Sarrus(p2, p1, s2) <= 0 && Sarrus(s2, s1, p1) * Sarrus(s2, s1, p2) <= 0)
+            {                
                 return true;
+            } 
             return false;
         }
         private bool se_afla_in_interiorul_poligonului(int pi, int pj)
@@ -91,14 +95,11 @@ namespace Geometrie6
             Pen cr = new Pen(Color.Red, 4);
             int nr_diagonale = 0;
             Tuple<int, int>[] diagonale = new Tuple<int, int>[n - 3];
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < n-3; i++)
             {
-                for(int j = i+2; j < n; j++)
+                for(int j = i+2; j < n-1; j++)
                 {
-                    if (i == 0 && j == n - 1)
-                    {
-                        break;
-                    }
+                    //g.DrawEllipse(cr, p[j].X,p[j].Y, 3, 3);
                     bool intersectie = false;
                     for (int k = 0; k < n - 1; k++)
                     {
@@ -111,15 +112,14 @@ namespace Geometrie6
                     if (i != n - 1 && i != 0 && j != n - 1 && j != 0 && se_intersecteaza(p[i], p[j], p[n - 1], p[0]))
                     {
                         intersectie = true;
-                        break;
                     }
                     if (!intersectie)
                     {
                         for (int k = 0; k < nr_diagonale; k++)
                         {
                             if (i != diagonale[k].Item1 && i != diagonale[k].Item2 &&
-                            j != diagonale[k].Item1 && j != diagonale[k].Item2 &&
-                           se_intersecteaza(p[i], p[j], p[diagonale[k].Item1], p[diagonale[k].Item2]))
+                             j != diagonale[k].Item1 && j != diagonale[k].Item2 &&
+                            se_intersecteaza(p[i], p[j], p[diagonale[k].Item1], p[diagonale[k].Item2]))
                             {
                                 intersectie = true;
                                 break;
@@ -129,8 +129,8 @@ namespace Geometrie6
                         {
                             if (se_afla_in_interiorul_poligonului(i, j))
                             {
-                                Thread.Sleep(100);
-                                g.DrawLine(cr, p[i], p[j]);
+                                Thread.Sleep(100);                                
+                                g.DrawLine(cr, p[i].X,p[i].Y, p[j].X,p[j].Y);
                                 diagonale[nr_diagonale] = new Tuple<int, int>(i, j);
                                 nr_diagonale++;
                             }

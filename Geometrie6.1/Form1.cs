@@ -17,7 +17,7 @@ namespace Geometrie6._1
         public int i = -1;
         public int j = 0;
         public int n, m,n2;
-        Point[] pct;
+        PointF[] pct;
         public Form1()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace Geometrie6._1
             g.DrawEllipse(cr, e.X, e.Y, 2, 2);
             g.DrawString(j.ToString(), new Font(FontFamily.GenericSansSerif, 10),
                 new SolidBrush(Color.Black), e.X, e.Y);
-            Point pt = new Point(e.X, e.Y);
+            PointF pt = new PointF(e.X, e.Y);
             pct[i] = pt;
             if (i > 0)
             {
@@ -55,7 +55,7 @@ namespace Geometrie6._1
             m = n - 1;
             i = -1;
             j = 0;
-            pct = new Point[n];
+            pct = new PointF[n];
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace Geometrie6._1
             this.Hide();
             this.Show();
         }
-        private double Sarrus(Point p1, Point p2, Point p3)
+        private double Sarrus(PointF p1, PointF p2, PointF p3)
         {
             return p1.X * p2.Y + p2.X * p3.Y + p3.X * p1.Y - p3.X * p2.Y - p2.X * p1.Y - p1.X * p3.Y;
         }
@@ -94,7 +94,7 @@ namespace Geometrie6._1
             int p_urm = (p < n - 1) ? p + 1 : 0;
             return intoarcere_spre_stanga(p_ant, p, p_urm);
         }
-        private bool se_intersecteaza(Point s1, Point s2, Point p1, Point p2)
+        private bool se_intersecteaza(PointF s1, PointF s2, PointF p1, PointF p2)
         {
             if (Sarrus(p2, p1, s1) * Sarrus(p2, p1, s2) <= 0 && Sarrus(s2, s1, p1) * Sarrus(s2, s1, p2) <= 0)
                 return true;
@@ -111,39 +111,42 @@ namespace Geometrie6._1
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            if (n <= 3)
-                return;
             int nr_diagonale = 0;
             Tuple<int, int>[] diagonale = new Tuple<int, int>[n - 3];
             Pen cr = new Pen(Color.Red, 4);
-            for (int i = 0; i < n - 2; i++)
-                for (int j = i + 2; j < n; j++)
+            for (int i = 0; i < n - 3; i++)
+                for (int j = i + 2; j < n-1; j++)
                 {
                     if (i == 0 && j == n - 1)
-                        break; // exclud ultima latura
+                        break;
                     bool intersectie = false;
                     //daca p_i p_j nu intersecteaza nicio latura neincidenta a poligonului
                     for (int k = 0; k < n - 1; k++)
-                        if (i != k && i != (k + 1) && j != k && j != (k + 1) && se_intersecteaza(pct[i], pct[j], pct[k], pct[k + 1]))
+                        if (i != k && i != (k + 1) && j != k && j != (k + 1))
                         {
-                            intersectie = true;
-                            break;
+                            if (se_intersecteaza(pct[i], pct[j], pct[k], pct[k + 1]))
+                            {
+                                intersectie = true;                             
+                            }
                         }
                     //verif si pt ultima latura a poligonului
-                    if (i != n - 1 && i != 0 && j != n - 1 && j != 0 && se_intersecteaza(pct[i], pct[j], pct[n - 1], pct[0]))
+                    if (i != n - 1 && i != 0 && j != n - 1 && j != 0)
                     {
-                        intersectie = true;
+                        if(se_intersecteaza(pct[i], pct[j], pct[n - 1], pct[0]))
+                            intersectie = true;
                     }
                     if (!intersectie)
                     {
                         //si daca p_i p_j nu intersecteaza niciuna din diagonalele alese anterior
                         for (int k = 0; k < nr_diagonale; k++)
                             if (i != diagonale[k].Item1 && i != diagonale[k].Item2 &&
-                            j != diagonale[k].Item1 && j != diagonale[k].Item2 &&
-                           se_intersecteaza(pct[i], pct[j], pct[diagonale[k].Item1], pct[diagonale[k].Item2]))
+                            j != diagonale[k].Item1 && j != diagonale[k].Item2)
                             {
-                                intersectie = true;
-                                break;
+                                if(se_intersecteaza(pct[i], pct[j], pct[diagonale[k].Item1], pct[diagonale[k].Item2]))
+                                {
+                                    intersectie = true;
+                                    
+                                }
                             }
                         if (!intersectie)
                         {
