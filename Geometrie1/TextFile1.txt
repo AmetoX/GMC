@@ -211,4 +211,8 @@ P [i]: = punct final Punct final: = S [0]
 // punct final final pentru o margine candidată pe corp pentru j de la 0 la | S | do            
 // punct final == pointOnHull este un caz rar și se poate întâmpla numai atunci 
 când j == 1 și încă nu a fost stabilit un punct final mai bun pentru buclă dacă 
-(punctul final == pointOnHull) sau (S [j] este la stânga liniei de la P [i] la punctul final) atunci                punct final: = S [j] // a găsit o viraj mai mare la stânga, actualizați punctul final i: = i + 1 punctOnHull = punct final pana cand punct final = P [0] // înfășurat până la primul punct al corpului
+(punctul final == pointOnHull) sau (S [j] este la stânga liniei de la P [i] la punctul final) atunci     
+punct final: = S [j] // a găsit o viraj mai mare la stânga, actualizați punctul final i: = i + 1 punctOnHull = punct final pana 
+cand punct final = P [0] // înfășurat până la primul punct al corpului
+
+un poligon monoton este cel care nu are varfuri de intoarcere
