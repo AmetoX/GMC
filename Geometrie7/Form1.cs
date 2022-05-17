@@ -141,10 +141,8 @@ namespace Geometrie7
                 {
                     if (se_afla_in_interiorul_poligonului(i, j))
                     {
-
                         //g.DrawLine(cr, p[i].X, p[i].Y, p[j].X, p[j].Y);
-                        diagonale[nr_diagonale] = new Tuple<int, int>(i, j);
-                        
+                        diagonale[nr_diagonale] = new Tuple<int, int>(i, j);                       
                     }
                 }
             }
