@@ -16,7 +16,7 @@ namespace Geometrie6._1
         Graphics g;
         public int i = -1;
         public int j = 0;
-        public int n, m,n2;
+        public int n, m, n2;
         PointF[] pct;
         public Form1()
         {
@@ -119,9 +119,9 @@ namespace Geometrie6._1
         {
             int nr_diagonale = 0;
             Tuple<int, int>[] diagonale = new Tuple<int, int>[n - 3];
-            Pen cr = new Pen(Color.Red, 4);
-            for (int i = 0; i < n - 3; i++)
-                for (int j = i + 2; j < n-1; j++)
+            Pen cr = new Pen(Color.Red, 2);
+            for (int i = 0; i < n - 2; i++)
+                for (int j = i + 2; j < n; j++)
                 {
                     if (i == 0 && j == n - 1)
                         break;
