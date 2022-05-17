@@ -100,6 +100,12 @@ namespace Geometrie6._1
                 return true;
             return false;
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private bool se_afla_in_interiorul_poligonului(int pi, int pj)
         {
             int pi_ant = (pi > 0) ? pi - 1 : n - 1;

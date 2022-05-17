@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie6", "..\Geometrie6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie6.1", "..\Geometrie6.1\Geometrie6.1.csproj", "{B24FAB84-E071-499A-8C8F-ABA681D4FB75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie7", "..\Geometrie7\Geometrie7.csproj", "{716826A0-2AD4-429D-BCB9-DF48749CE4C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{B24FAB84-E071-499A-8C8F-ABA681D4FB75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B24FAB84-E071-499A-8C8F-ABA681D4FB75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B24FAB84-E071-499A-8C8F-ABA681D4FB75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{716826A0-2AD4-429D-BCB9-DF48749CE4C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{716826A0-2AD4-429D-BCB9-DF48749CE4C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{716826A0-2AD4-429D-BCB9-DF48749CE4C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{716826A0-2AD4-429D-BCB9-DF48749CE4C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
