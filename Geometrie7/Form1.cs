@@ -109,11 +109,11 @@ namespace Geometrie7
         int nr_diagonale = 0;
         private bool diagonala(int i, int j)
         {
-            int m = n;
-            Pen cr = new Pen(Color.Red, 2);            
+            
+            Pen cr = new Pen(Color.Red, 2);
             Tuple<int, int>[] diagonale = new Tuple<int, int>[m - 3];
             bool intersectie = false;
-            for (int k = 0; k < m - 1; k++)
+            for (int k = 0; k < n - 1; k++)
             {
                 if (i != k && i != (k + 1) && j != k && j != (k + 1) && se_intersecteaza(p[i], p[j], p[k], p[k + 1]))
                 {
@@ -121,7 +121,7 @@ namespace Geometrie7
                     break;
                 }
             }
-            if (i != m - 1 && i != 0 && j != m - 1 && j != 0 && se_intersecteaza(p[i], p[j], p[m - 1], p[0]))
+            if (i != n - 1 && i != 0 && j != n - 1 && j != 0 && se_intersecteaza(p[i], p[j], p[n - 1], p[0]))
             {
                 intersectie = true;
             }
@@ -142,7 +142,8 @@ namespace Geometrie7
                     if (se_afla_in_interiorul_poligonului(i, j))
                     {
                         //g.DrawLine(cr, p[i].X, p[i].Y, p[j].X, p[j].Y);
-                        diagonale[nr_diagonale] = new Tuple<int, int>(i, j);                       
+                        diagonale[nr_diagonale] = new Tuple<int, int>(i, j);
+                        nr_diagonale++;
                     }
                 }
             }
@@ -150,21 +151,22 @@ namespace Geometrie7
                 return true;
             else
                 return false;
-        }          
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             Pen cr = new Pen(Color.Red, 2);
             Pen sterg = new Pen(Color.White, 5);
             while (n > 3)
             {
-                for(int i = 1; i < n; i++)
+                for (int i = 0; i < n-2; i++)
                 {
                     if (diagonala(i, i + 2))
                     {
-                        g.DrawLine(cr, p[i].X, p[i].Y, p[i+2].X, p[i+2].Y);
-                        g.DrawEllipse(sterg, p[i + 1].X, p[i + 1].Y, raza, raza);
-                        p.Remove(p[i+1]);
-                        n = n - 1;
+                        g.DrawLine(cr, p[i].X, p[i].Y, p[i + 2].X, p[i + 2].Y);
+                        //g.DrawEllipse(sterg, p[i + 1].X, p[i + 1].Y, raza, raza);
+                        p.RemoveAt(i + 1);
+                        
+                        n--;
                         break;
                     }
                 }
