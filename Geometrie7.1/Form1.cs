@@ -141,7 +141,6 @@ namespace Geometrie7._1
             triangles.Add(new Tuple<int, int, int>(triangleV1, triangleV2, triangleV3));
         }
 
-
         private int ValoareDeterminant(Point a, Point b, Point c)
         {
             return a.X * b.Y + b.X * c.Y + c.X * a.Y - c.X * b.Y - a.X * c.Y - b.X * a.Y;

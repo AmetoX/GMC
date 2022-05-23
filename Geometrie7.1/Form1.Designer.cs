@@ -67,7 +67,7 @@
             this.buttonTriang.Name = "buttonTriang";
             this.buttonTriang.Size = new System.Drawing.Size(100, 31);
             this.buttonTriang.TabIndex = 3;
-            this.buttonTriang.Text = "Triangulare";
+            this.buttonTriang.Text = "Otectonie";
             this.buttonTriang.UseVisualStyleBackColor = true;
             this.buttonTriang.Click += new System.EventHandler(this.buttonTriang_Click);
             // 
