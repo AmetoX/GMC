@@ -30,63 +30,61 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonFinishUp = new System.Windows.Forms.Button();
-            this.buttonPartiton = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Location = new System.Drawing.Point(0, 29);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(620, 343);
+            this.panel1.Size = new System.Drawing.Size(741, 340);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(639, 13);
+            this.button1.Location = new System.Drawing.Point(409, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "DrawMode";
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Reset";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // buttonFinishUp
+            // button2
             // 
-            this.buttonFinishUp.Enabled = false;
-            this.buttonFinishUp.Location = new System.Drawing.Point(639, 43);
-            this.buttonFinishUp.Name = "buttonFinishUp";
-            this.buttonFinishUp.Size = new System.Drawing.Size(75, 23);
-            this.buttonFinishUp.TabIndex = 2;
-            this.buttonFinishUp.Text = "FinishUp";
-            this.buttonFinishUp.UseVisualStyleBackColor = true;
-            this.buttonFinishUp.Click += new System.EventHandler(this.buttonFinishUp_Click);
+            this.button2.Location = new System.Drawing.Point(247, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Inchide";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // buttonPartiton
+            // button3
             // 
-            this.buttonPartiton.Enabled = false;
-            this.buttonPartiton.Location = new System.Drawing.Point(638, 72);
-            this.buttonPartiton.Name = "buttonPartiton";
-            this.buttonPartiton.Size = new System.Drawing.Size(75, 23);
-            this.buttonPartiton.TabIndex = 3;
-            this.buttonPartiton.Text = "Partition";
-            this.buttonPartiton.UseVisualStyleBackColor = true;
-            this.buttonPartiton.Click += new System.EventHandler(this.buttonPartiton_Click);
+            this.button3.Location = new System.Drawing.Point(328, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Partitionare";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 367);
-            this.Controls.Add(this.buttonPartiton);
-            this.Controls.Add(this.buttonFinishUp);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
-            this.Text = "FormPartPoligMontone";
+            this.Text = "Form1";
             this.ResumeLayout(false);
 
         }
@@ -95,8 +93,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button buttonFinishUp;
-        private System.Windows.Forms.Button buttonPartiton;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 
