@@ -175,7 +175,7 @@ namespace Geometrie9
         private bool EsteDiagonala(List<Point> puncte, int i, int j)
         {
             bool intersectie = false;
-            //nu intersecteaza laturi neinciente
+            
             for (int k = 0; k < puncte.Count - 1; k++)
             {
                 if (i != k && i != (k + 1) && j != k && j != (k + 1) && se_intersecteaza(puncte[i], puncte[j], puncte[k], puncte[k + 1]))
@@ -184,12 +184,12 @@ namespace Geometrie9
                     break;
                 }
             }
-            //vf pt ultima latura
+            
             if (i != puncte.Count - 1 && i != 0 && j != puncte.Count - 1 && j != 0 && se_intersecteaza(puncte[i], puncte[j], puncte[puncte.Count - 1], puncte[0]))
             {
                 intersectie = true;
             }
-            //se afla in interiorul P
+            
             if (!intersectie && se_afla_in_interiorul_poligonului(puncte, i, j))
             {
                 return true;
